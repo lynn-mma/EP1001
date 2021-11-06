@@ -22,7 +22,7 @@
         <div class="row fixed-top">
             <div class="col-lg-2"></div>
             <div class="col-lg-8 col-md-12">
-                <nav class="navbar navbar-expand">
+                <nav class="navbar navbar-expand bg-white">
                     <ul class="navbar-nav mr-auto" id="navbarul">
                         <li class="nav-item"><a class="nav-link text-info" href="index.html">Home Page</a> </li>
                         <li class="nav-item"><a class="nav-link text-info" href="about.html">About</a> </li>
@@ -50,9 +50,84 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <h1>Electronics Production</h1>
-                <div class="text-secondary">
-                <p>Content</p>
-                </div>
+                <h2>Introduction</h2>
+                <p>This week, we learnt how to produce custom PCB through milling using a CNC machine.</p>
+                <p>Skills such as:</p>
+                <ul>
+                    <li>Generating G-code using a PNG image</li>
+                    <li>Operating a CNC machine to mill the PCB</li>
+                    <li>Stuffing (populating) the PCB</li>
+                    <li>Soldering SMDs</li>
+                </ul>
+                <p>were acquired.</p>
+                <h2>Generating G-code using a PNG file.</h2>
+                <p>As we havent learnt electronics design yet, I used the ISP PCB design provided by our lecturer. One thing to take note of is that the white regions are the areas we want to keep, and that the program will mill in the black regions. 2 PNG files were needed, the trace, which is milled to just the thickness of the copper, and the outline, which will be milled all the way through.</p>
+                <figure class="figure">
+                    <img src="./images/EProd/Trace.png" class="figure-img img-fluid rounded" alt="trace.png">
+                    <figcaption class="figure-caption">The PNG for the copper traces.</figcaption>
+                    <img src="./images/EProd/Outline.png" class="figure-img img-fluid rounded" alt="outline.png">
+                    <figcaption class="figure-caption">The PNG for the outline of the board.</figcaption>
+                </figure>
+                <p>Once the PNGs were aquired, the G-code was generated using a program on a site provided by the lecturer called <a href="https://skeatz.github.io/mods/" target="_blank">mods</a>. To access the program on the site, rightclick -> programs -> open server program -> (Under G-code) mill 2D PCB PNG. A series of boxes with various parameters should open up as seen in the image below.</p>
+                <figure class="figure">
+                    <img src="./images/EProd/mods.png" class="figure-img img-fluid rounded" alt="mods.png">
+                    <figcaption class="figure-caption">Mill 2D PCB PNG Program.</figcaption>
+                </figure>
+                <p>The machine we were using to mill the PCBs was the Stepcraft 420. Below were the recommended settings for the Stepcraft.</p>
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Operation</th>
+                        <th scope="col">Endmill Size</th>
+                        <th scope="col">Cut Speed</th>
+                        <th scope="col">Cut Depth</th>
+                        <th scope="col">Total Depth</th>
+                        <th scope="col">Offset</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Traces</th>
+                        <td>0.1 mm 30 deg V-bit</td>
+                        <td>50~60mm/min</td>
+                        <td>0.04 ~ 0.05 mm</td>
+                        <td>0.04 ~ 0.05 mm</td>
+                        <td>1-2</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Board Outline</th>
+                        <td>0.8 mm flat</td>
+                        <td>50~60 mm/min</td>
+                        <td>0.42-0.45 mm</td>
+                        <td>1.65 ~ 1.70 mm</td>
+                        <td>1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>To use the program:</p>
+                  <ol>
+                      <li>In the first node and select the PNG file to generate G-code with.</li>
+                      <li>In the second node and input the settings for both traces and outline. To switch between the 2 settings, click the option needed.</li>
+                      <li>In the third node, click calculate. The G-code file has been generated and should automatically download. If download doesnt start, check if there is any popup blockers in the browser present.</li>
+                      <li>Optionally, the toolpath can be viewed in 3D. Generally, it is good practice to ensure and check that the G-code is generated as intended.</li>
+                  </ol>
+                <img src="./images/EProd/modsteps.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps1">
+                <img src="./images/EProd/modsteps2.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps2">
+                <p>To generate my G-code, I mainly used the recommended settings, save for increasing the number of trace offsets to 4. As this was my first time soldering small components like the SMDs, I wanted to reduce the chances of shorting connections by making the distance between traces larger. This resulted in longer mill times but as a precaution I think it was worth the extra time.</p>
+                <p>After the G-code was generated, we were taught how to use the machine and afterwards, were free to mill the PCB.</p>
+                <figure class="figure">
+                <img src="./images/EProd/milling.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="milling">
+                <figcaption class="figure-caption">Mill doing milling stuff.</figcaption>
+                <img src="./images/EProd/badISP.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="what a doo doo ISP board">
+                <figcaption class="figure-caption">First attempt.</figcaption>
+                </figure>
+                <p>On my first attempt at milling, my board was less than ideal. Instead of the bit cutting the copper, it was more like tearing the copper away. I suspect this was due to a dull or broken bit. The edges were mangled and some of the traces even lifted off the board. Even after sanding, I was not confident in the connections across the board and decided to give milling another try.</p>
+                <p>After a new sharper bit and 1 more hour, I got a PCB that I was confident in continuing with. After deburring and removing dead copper, the PCB looks like the board below, with crisp edges and well defined traces, a large step up from my first attempt. Forgive me I did not take a picture of my own board as I was too overzealous in continuing onto stuffing the board.</p>
+                <figure class="figure">
+                    <img src="./images/EProd/goodISP.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="milling">
+                    <figcaption class="figure-caption">What a good board looks like. Photo courtesy of Ethan "Demon" Ng Chee Rui, fellow EP1001 classmate.</figcaption>
+                </figure>
+
             </div>
             <div class="col-lg-2"></div>
         </div>
