@@ -152,7 +152,34 @@
                 <img src="./images/EProd/ISP1.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
                 <img src="./images/EProd/ISP2.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
                 <img src="./images/EProd/ISP3.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
-                <p><br>Not the best, but serviceable. Now that I learnt how to make a PCB, next week it is time to learn how to design one from scratch.</p>
+                <p>The only issue so far is that the pcb is too thin to fit in the USB port of my computer. To remedy this problem, I just got a 3d printed profile of the ISP and glued it to the bottom of the pcb, thickening it enough to stay in the USB port</p>
+                <img src="./images/EProd/improvement.jpg" class="img-fluid rounded mx-auto d-block w-100">
+                <h2>Setting up the board as an ISP Programmer</h2>
+                <p>The following software are needed:</p>
+                <ul>
+                    <li>GIT for windows</li>
+                    <li>Atmel GNU Toolchain</li>
+                    <li>GNU make</li>
+                    <li>avrdude</li>
+                    <li>Zadig</li>
+                </ul>
+                <p>The first step is to go into system properties -> environment variables -> PATH, then edit to add 3 new paths: </p>
+                <p>C:\Program Files\avrdude</p>
+                <p>C:\Program Files\avr-gcc-10.1.0-x64-windows\bin</p>
+                <p>C:\Program Files (x86)\GnuWin32\bin</p>
+                <img src="./images/EProd/systemprod2.png" class="figure-img img-fluid rounded">
+                <img src="./images/EProd/systemprod3.png" class="figure-img img-fluid rounded">
+                <p>Next is installing the drivers necessary. Using Zadig, download and install "libusb-win32" driver for the programmer.</p>
+                <img src="./images/EProd/zadig.png" class="figure-img img-fluid rounded"><br>
+                <p>After drivers its time to deal with firmware. Download the <a href="./images/EProd/fts_firmware_bdm_v1 (3).zip">firmware zip file and open up "makefile" using a text editor.</a></p>
+                <p>As I am using the ATTiny85, I changed the MCU in the makefile from attiny45 to attiny58.</p>
+                <img src="./images/EProd/MCU.png" class="figure-img img-fluid rounded">
+                <p>Once the makefile was editted and saved, I used a provided ISP programmer to program my ISP. I made sure that the connections were all correct before proceding. I opened up command prompt and cd'ed to the file containing the hex file. From there, I just followed the instructions on the makefile on uploading the firmware.</p>
+                <img src="./images/EProd/instructions.png" class="figure-img img-fluid rounded">
+                <p>However, before I put in rstdisbl, I made sure to check that the board was recognised as an ISP in windows. It is important to check before reset is disabled as when it is done, the programmer cannot be reflashed anymore. The reset is needed to be disabled as it is used as an IO in the programmer. To check, unplug your board from the provided programmer and plug it in to the computer directly. Then go to device manager and check under libusb-win32 devices, a device named USBtinySPI should be there. </p>
+                <img src="./images/EProd/devicemanager.png" class="figure-img img-fluid rounded">
+                <p>Once it is verified that windows recognises the device, I put in the rstdisbl command. And with that, my programmer is done and ready to program other things.</p>
+                <br><br><br>
             </div>
 
             <div class="col-lg-2"></div>
