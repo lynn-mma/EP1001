@@ -43,9 +43,9 @@
             <div class="col-lg-8">
                 <h1>3D Computer Controlled Machining</h1>
                 <h2>Introduction</h2>
-                <p>3D machining is using all 3 axes of the machine, X Y Z in tandem to create a 3D part. </p>
+                <p>3D machining is using all 3 axes of the machine, X Y Z in tandem to create a 3D part. For this assignment, we used the same stepcraft machine we used for PCB milling.</p>
                 <h2>Making the model</h2>
-                <p>We were to model a 3D model that roughly fits in a 50x50x30mm area. Considering the size, I decided to make a pen holder. I started by making a stock model, which is just a rectangle 45x45x20, as the model I plan to make is not that big and I wanted to save material.</p>
+                <p>We were to model a 3D model that roughly fits in a 50x50x30mm area. Considering the size, I decided to make a drawing tablet pen holder. I started by making a stock model, which is just a rectangle 45x45x20, as the model I plan to make is not that big and I wanted to save material.</p>
                 <img src="./images/3dcnc/stockmodel.png" class="figure-img img-fluid rounded">
                 <p>I then offset the outer wall in by 5mm and made a cavity 15mm deep. This is the walls of the negative mold that I plan to make.</p>
                 <img src="./images/3dcnc/depth.png" class="figure-img img-fluid rounded">
@@ -77,6 +77,20 @@
                 <p>After the toolpath is generated, I clicked the post process button found on the top navbar, and selected the stepcraft UCCNC that I installed earlier in "post"</p>
                 <img src="./images/3dcnc/postprocess.png" class="figure-img img-fluid rounded">
                 <img src="./images/3dcnc/ncfile.png" class="figure-img img-fluid rounded">
+                <p>After that, I saved the file location then clicked the "post" button. With that, the g-code generation was done. I then headed to the stepcraft CNC</p>
+                <h2>Milling</h2>
+                <p>To setup the stock for the milling, I got a block of blue dense foam, just large enough for my piece. I first marked the rough center using a knife and a ruler.</p>
+                <img src="./images/3dcnc/stocksetup.jpg" class="figure-img img-fluid rounded">
+                <p>After that, I set up the machine. I used double sided tape to stick onto the machine. A 3mm bit was used to mill the piece. X and Y 0 were set to the center I marked earlier, and Z 0 was set by just estimating on the mark. Afterwards, I just turned on the dremel and cycle started.</p>
+                <img src="./images/3dcnc/machine.jpg" class="figure-img img-fluid rounded">
+                <img src="./images/3dcnc/machining.jpg" class="figure-img img-fluid rounded">
+                <p>After 45 minutes (or so), the machining was done. I vacuumed up the debris, took out the piece and this was the result of the milling.</p>
+                <img src="./images/3dcnc/final1.jpg" class="figure-img img-fluid rounded">
+                <img src="./images/3dcnc/final2.jpg" class="figure-img img-fluid rounded">
+                <p>After the milling was done, it was time to make a mold and cast a new pen holder. I made some mistakes during the assignment that I need to keep in mind for next time. One being that I used a finishing pass for the entire milling process. Because of this, the machining time was very long considering the small amount of material I am removing. In the future I would try to set up 2 toolpaths, one roughing pass and one finishing pass. I also need to get used to the manufacture tab of Fusion360 as I am still unfamiliar with most of the features. </p>
+                <br>
+                <br>
+                <br>
             </div>
             <div class="col-lg-2"></div>
         </div>
