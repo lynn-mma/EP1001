@@ -130,14 +130,10 @@
                 <p>This was when I encountered an issue, not a major issue but just something to take note of in the future. When soldering on the housing(?) of the mini usb to the PCB, I accidentally put too much solder on one of the pads and the pad connected to the rest of the PCB (as shown above, near the bottom right). I tried to remelt the solder to remove it, but no matter how long I  put the iron on the blob, it would not melt. This is when I realised that, essentially, the large sheet of copper connected was acting like a heat sink to the pad, and all the heat I was adding to the pad was being removed just as quickly and being dispersed. After a few minutes, I just gave up and left it as is, as it did not affect other components anyways.</p>
                 <img src="./images/FinalProj/soldered.jpg" class="figure-img img-fluid rounded" alt="Soldered">
                 <p>The rest of the components went down well. The only issue I faced was that I forgot that 2 bypass capacitors were needed, but I forgot it in the design. Luckily, the capacitors are supposed to be in parallel, so I just stacked the 2. Unelegant, yes, but I had no other options really. And with that, the PCB is (mostly) done and I tested it using the programmer.</p>
-
-
-
                 
                 <h2 id="pcbtst">Testing the PCB</h2>
                 <p>I opened up terminal and ran "avrdude -pm328 -cusbtiny", and it was able to recognise the chip, which is good news. That means that I can try programming this using arduino IDE to test.</p>
                 <img src="./images/FinalProj/test2.jpg" class="figure-img img-fluid rounded" alt="test2">
-                
                 
                 
                 <h2 id="casedsn">Case Design and Manufacturing</h2>
