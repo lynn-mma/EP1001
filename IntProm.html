@@ -42,6 +42,60 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <h1>Interface Programming</h1>
+                <h2>Introduction</h2>
+                <p>Using external software, we can create an interface that interacts with an input or output device. For this assignment, we are tasked to write an application that interfaces the user with an input or output device that we made.</p>
+                <h2>Software download and installation</h2>
+                <p>For this assignment, I used Processing to make the interface. I downloaded Processing 3.5.4 from <a href="https://processing.org/download" target="_blank">here</a>, then extracted the zip file. In the file, I just opened up Processing.exe.</p>
+                <img src="./media/interfacing/file.png" class="figure-img img-fluid rounded">
+                <h2>Configuring Processing.</h2>
+                <p>As this is my first time using processing, I decided to follow a <a href="https://www.youtube.com/watch?v=5WjEQSMiqMQ&ab_channel=HardikRathod" target=""_blank>tutorial by Hardik Rathod on youtube</a> to make a simple application with buttons to interface with LEDs on an arduino. To start off, I first had to add the ControlP5 library.</p>
+                <p>Once the processing sketch window is open, I went to "sketch" in the top navbar, hovered over "import library" and clicked "add library"</p>
+                <img src="./media/interfacing/addlib.png" class="figure-img img-fluid rounded">
+                <p>From there, I just searched for "ControlP5" and installed the library.</p>
+                <img src="./media/interfacing/controlP.png" class="figure-img img-fluid rounded">
+                <p>Once that was done, I can start making the application.</p>
+                <h2>Making the window.</h2>
+                <p>Following the tutorial, I first made a window to contain the buttons. After I wrote the code, I clicked the run button on the top. A new window should open up.</p>
+                <img src="./media/interfacing/window.png" class="figure-img img-fluid rounded">
+                <h2>Making the buttons.</h2>
+                <p>I added the buttons on the window by copy pasting the same 3 lines. I then ran the sketch and checked for bugs.</p>
+                <img src="./media/interfacing/buttoncode.png" class="figure-img img-fluid rounded">
+                <br>
+                <img src="./media/interfacing/badcrop.png" class="figure-img img-fluid rounded">
+                <p>Because the height of the window was too short, the bottom button ended up getting cropped. To remedy this, I just changed the height to 500.</p>
+                <img src="./media/interfacing/newheight.png" class="figure-img img-fluid rounded">
+                <img src="./media/interfacing/goodcrop.png" class="figure-img img-fluid rounded">
+                <p>Afterwards, I changed the font to "calibri light" at font size 20, by adding these lines of code. .setFont is added to all the buttons that I want to change font to.</p>
+                <img src="./media/interfacing/addedlinesfont.jpg" class="figure-img img-fluid rounded">
+                <p>Now the window and buttons look like this.</p>
+                <img src="./media/interfacing/newwindow.png" class="figure-img img-fluid rounded">
+                <h2>The arduino part.</h2>
+                <p>Now I am making an arduino sketch to interact with the application. In the tutorial, the arduino sketch takes in the serial input from Processing and switches on and off some LEDs. In essence, it takes in a char value from serial and does a thing.</p>
+                <img src="./media/interfacing/arduino.png" class="figure-img img-fluid rounded">
+                <h2>Serial Interfacing</h2>
+                <p>In order for Processing to have serial communication, I added a few new lines.</p>
+                <img src="./media/interfacing/newlinesserial.png" class="figure-img img-fluid rounded">
+                <p>Then, I added the functions to send the serial char when the button is pressed.</p>
+                <img src="./media/interfacing/functions.png" class="figure-img img-fluid rounded">
+                <h2>The circuit</h2>
+                <p>The electronics is very simple. I used an arduino pro micro clone, 3 200ohm resistors and 3 leds, green, red and yellow. Outputs 8,9 and 10 just go out to resistors and LEDs in series, and ground is connected back to the arduino</p>
+                <img src="./media/interfacing/circuit.jpg" class="figure-img img-fluid rounded">
+                <h2>Testing</h2>
+                <p>Afterwards, I plugged in the pro micro, uploaded the arduino sketch and ran the processing code. Here is a video of the programs working.</p>
+                <video width="420" height="240" controls>
+                    <source src="./media/interfacing/processingtest.mp4" type="video/mp4">
+                </video>
+                <h2>Thoughts</h2>
+                <p>Overall, processing was a fun assignment. In the future I want to try and implement this to my other projects. However, I do not think I will be implementing this in my final project.</p>
+                <h2>Files</h2>
+                <a href="./media/interfacing/LEDcontrol/LEDcontrol.ino" target="_blank" download>Arduino Sketch</a>
+                <br>
+                <a href="./media/interfacing/LEDcontrol/LEDControl.pde" target="_blank" download>Processing Sketch</a>
+                <br><br><br>
+
+                
+
+
 
             <div class="col-lg-2"></div>
         </div>

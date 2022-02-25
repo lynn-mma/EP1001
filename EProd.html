@@ -56,15 +56,15 @@
                 <h2>Generating G-code using a PNG file.</h2>
                 <p>As we havent learnt electronics design yet, I used the ISP PCB design provided by our lecturer. One thing to take note of is that the white regions are the areas we want to keep, and that the program will mill in the black regions. 2 PNG files were needed, the trace, which is milled to just the thickness of the copper, and the outline, which will be milled all the way through.</p>
                 <figure class="figure">
-                    <img src="./images/EProd/Trace.png" class="figure-img img-fluid rounded" alt="trace.png">
+                    <img src="./media/EProd/Trace.png" class="figure-img img-fluid rounded" alt="trace.png">
                     <figcaption class="figure-caption">The PNG for the copper traces.</figcaption>
                     <br>
-                    <img src="./images/EProd/Outline.png" class="figure-img img-fluid rounded" alt="outline.png">
+                    <img src="./media/EProd/Outline.png" class="figure-img img-fluid rounded" alt="outline.png">
                     <figcaption class="figure-caption">The PNG for the outline of the board.</figcaption>
                 </figure>
                 <p>Once the PNGs were acquired, the G-code was generated using a program on a site provided by the lecturer called <a href="https://skeatz.github.io/mods/" target="_blank">mods</a>. To access the program on the site, rightclick -> programs -> open server program -> (Under G-code) mill 2D PCB PNG. A series of boxes with various parameters should open up as seen in the image below.</p>
                 <figure class="figure">
-                    <img src="./images/EProd/mods.png" class="figure-img img-fluid rounded" alt="mods.png">
+                    <img src="./media/EProd/mods.png" class="figure-img img-fluid rounded" alt="mods.png">
                     <figcaption class="figure-caption">Mill 2D PCB PNG Program.</figcaption>
                 </figure>
                 <p>The machine we were using to mill the PCBs was the Stepcraft 420. Below were the recommended settings for the Stepcraft.</p>
@@ -105,26 +105,26 @@
                       <li>In the third node, click calculate. The G-code file has been generated and should automatically download. If download doesnt start, check if there is any popup blockers in the browser present.</li>
                       <li>Optionally, the toolpath can be viewed in 3D. Generally, it is good practice to ensure and check that the G-code is generated as intended.</li>
                   </ol>
-                <img src="./images/EProd/modsteps.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps1">
-                <img src="./images/EProd/modsteps2.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps2">
+                <img src="./media/EProd/modsteps.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps1">
+                <img src="./media/EProd/modsteps2.png" class="img-fluid rounded mx-auto d-block w-100" alt="steps2">
                 <p>To generate my G-code, I mainly used the recommended settings, save for increasing the number of trace offsets to 4. As this was my first time soldering small components like the SMDs, I wanted to reduce the chances of shorting connections by making the distance between traces larger. This resulted in longer mill times but as a precaution I think it was worth the extra time.</p>
                 <h2>Milling the PCB</h2>
                 <p>After the G-code was generated, we were taught how to use the machine and afterwards, were free to mill the PCB.</p>
                 <figure class="figure">
-                <img src="./images/EProd/milling.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="milling">
+                <img src="./media/EProd/milling.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="milling">
                 <figcaption class="figure-caption">Mill doing milling stuff.</figcaption>
-                <img src="./images/EProd/badISP.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="what a doo doo ISP board">
+                <img src="./media/EProd/badISP.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="what a doo doo ISP board">
                 <figcaption class="figure-caption">First attempt.</figcaption>
                 </figure>
                 <p>On my first attempt at milling, my board was less than ideal. Instead of the bit cutting the copper, it was more like tearing the copper away. I suspect this was due to a dull or broken bit. The edges were mangled and some of the traces even lifted off the board. Even after sanding, I was not confident in the connections across the board and decided to give milling another try.</p>
                 <p>After a new sharper bit and 1 more hour, I got a PCB that I was confident in continuing with. After deburring and removing dead copper, the PCB looks like the board below, with clean edges and well defined traces, a large step up from my first attempt. Forgive me I did not take a picture of my own board as I was too overzealous in continuing onto stuffing the board.</p>
                 <figure class="figure">
-                    <img src="./images/EProd/goodISP.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="good ISP">
+                    <img src="./media/EProd/goodISP.jpg" class="img-fluid rounded mx-auto d-block w-20" alt="good ISP">
                     <figcaption class="figure-caption">What a good board looks like. Photo courtesy of Ethan "Demon" Ng Chee Rui, fellow EP1001 classmate.</figcaption>
                 </figure>
                 <h2>Stuffing the board</h2>
                 <p>Parts were obtained for the PCB according to this schematic.</p>
-                <img src="./images/EProd/schematic.png" class="img-fluid rounded mx-auto d-block w-100" alt="wiring schematic">
+                <img src="./media/EProd/schematic.png" class="img-fluid rounded mx-auto d-block w-100" alt="wiring schematic">
                 <p>The list of components include:</p>
                 <ul>
                     <li>ATtiny85 x 1</li>
@@ -139,15 +139,15 @@
                     <li>6mm switch x 1</li>
                 </ul>
                 <p>and the components were soldered on the PCB according to this other schematic.</p>
-                <img src="./images/EProd/pcb.png" class="img-fluid rounded mx-auto d-block w-100" alt="pcb schematic">
+                <img src="./media/EProd/pcb.png" class="img-fluid rounded mx-auto d-block w-100" alt="pcb schematic">
                 <br>
                 <p>I had very little regular soldering experience before this, let alone SMD soldering. As a result, stuffing the board was a very difficult process, but it was fun to learn a new skill. I think it could have gone better if I used a sharp soldering bit, because at the time I was still using the standard fat bit, but overall I think that the soldering isnt that bad. There is still a lot to be improved on though, such as reducing the amound of solder used.</p>
                 <p>After stuffing the board, this was what I ended up with.</p>
-                <img src="./images/EProd/ISP1.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
-                <img src="./images/EProd/ISP2.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
-                <img src="./images/EProd/ISP3.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
+                <img src="./media/EProd/ISP1.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
+                <img src="./media/EProd/ISP2.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
+                <img src="./media/EProd/ISP3.jpg" class="img-fluid rounded mx-auto d-block w-100" alt="schematic">
                 <p>The only issue so far is that the pcb is too thin to fit in the USB port of my computer. To remedy this problem, I just got a 3d printed profile of the ISP and glued it to the bottom of the pcb, thickening it enough to stay in the USB port</p>
-                <img src="./images/EProd/improvement.jpg" class="img-fluid rounded mx-auto d-block w-100">
+                <img src="./media/EProd/improvement.jpg" class="img-fluid rounded mx-auto d-block w-100">
                 <h2>Setting up the board as an ISP Programmer</h2>
                 <p>The following software are needed:</p>
                 <ul>
@@ -161,17 +161,17 @@
                 <p>C:\Program Files\avrdude</p>
                 <p>C:\Program Files\avr-gcc-10.1.0-x64-windows\bin</p>
                 <p>C:\Program Files (x86)\GnuWin32\bin</p>
-                <img src="./images/EProd/systemprod2.png" class="figure-img img-fluid rounded">
-                <img src="./images/EProd/systemprod3.png" class="figure-img img-fluid rounded">
+                <img src="./media/EProd/systemprod2.png" class="figure-img img-fluid rounded">
+                <img src="./media/EProd/systemprod3.png" class="figure-img img-fluid rounded">
                 <p>Next is installing the drivers necessary. Using Zadig, download and install "libusb-win32" driver for the programmer.</p>
-                <img src="./images/EProd/zadig.png" class="figure-img img-fluid rounded"><br>
-                <p>After drivers its time to deal with firmware. Download the <a href="./images/EProd/fts_firmware_bdm_v1 (3).zip">firmware zip file and open up "makefile" using a text editor.</a></p>
+                <img src="./media/EProd/zadig.png" class="figure-img img-fluid rounded"><br>
+                <p>After drivers its time to deal with firmware. Download the <a href="./media/EProd/fts_firmware_bdm_v1 (3).zip">firmware zip file</a> and open up "makefile" using a text editor.</p>
                 <p>As I am using the ATTiny85, I changed the MCU in the makefile from attiny45 to attiny58.</p>
-                <img src="./images/EProd/MCU.png" class="figure-img img-fluid rounded">
+                <img src="./media/EProd/MCU.png" class="figure-img img-fluid rounded">
                 <p>Once the makefile was editted and saved, I used a provided ISP programmer to program my ISP. I made sure that the connections were all correct before proceding. I opened up command prompt and cd'ed to the file containing the hex file. From there, I just followed the instructions on the makefile on uploading the firmware.</p>
-                <img src="./images/EProd/instructions.png" class="figure-img img-fluid rounded">
+                <img src="./media/EProd/instructions.png" class="figure-img img-fluid rounded">
                 <p>However, before I put in rstdisbl, I made sure to check that the board was recognised as an ISP in windows. It is important to check before reset is disabled as when it is done, the programmer cannot be reflashed anymore. The reset is needed to be disabled as it is used as an IO in the programmer. To check, I unplugged my board from the provided programmer and plugged it in to the computer directly. Then went to device manager and check under libusb-win32 devices, a device named USBtinySPI should be there. </p>
-                <img src="./images/EProd/devicemanager.png" class="figure-img img-fluid rounded">
+                <img src="./media/EProd/devicemanager.png" class="figure-img img-fluid rounded">
                 <p>Once it is verified that windows recognises the device, I put in the rstdisbl command. And with that, my programmer is done and ready to program other things.</p>
                 <br><br><br>
             </div>

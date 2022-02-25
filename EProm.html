@@ -45,23 +45,28 @@
                 <h1>Embedded Programming</h1>
                 <h2>Installing and changing necessary items</h2>
                 <p>Now that I made my ISP programmer board and my Hello Board, it was time to try and program the Hello Board using the ISP. First, I needed the attiny core from <a href="https://github.com/SpenceKonde/ATTinyCore"> Spence Konde.</a> I just had to open up my arduino 1.8.13, go to file -> preferences, and near the bottom there is a section for "Additional Boards Manager URLs". Here I just copy pasted in "http://drazzy.com/package_drazzy.com_index.json" </p>
-                <img src="./images/eprom/preferences.png" class="figure-img img-fluid rounded" alt="preference1">
-                <img src="./images/eprom/preferences2.png" class="figure-img img-fluid rounded" alt="preference2">
+                <img src="./media/eprom/preferences.png" class="figure-img img-fluid rounded" alt="preference1">
+                <img src="./media/eprom/preferences2.png" class="figure-img img-fluid rounded" alt="preference2">
                 <p>Afterwards, I had to set up the IDE to program the Hello Board. I selected the board, chip, clock source and the programmer. I then burned the bootloader and my ISP was ready to program the hello board.</p>
-                <img src="./images/eprom/idesetup.png" class="figure-img img-fluid rounded" alt="setup">
+                <img src="./media/eprom/idesetup.png" class="figure-img img-fluid rounded" alt="setup">
                 <h2>Programming the board</h2>
                 <p>I wrote a simple program to test if my hello board was programmable. It just makes the LED blink when I press the button.</p>
-                <img src="./images/eprom/badcode.png" class="figure-img img-fluid rounded" alt="bad code">
+                <img src="./media/eprom/badcode.png" class="figure-img img-fluid rounded" alt="bad code">
                 <p>To program the board, I went to sketch then upload using programmer. CTRL + SHIFT + U is the shortcut to program. </p>
-                <img src="./images/eprom/program.png" class="figure-img img-fluid rounded" alt="programming">
+                <img src="./media/eprom/program.png" class="figure-img img-fluid rounded" alt="programming">
                 <p>However, when I pressed the button, nothing happened. At first I thought it was an issue with my setup, but after a while, I realised my mistake.</p>
-                <p>I went to read the datasheet for the attiny85 and there, I found out that the pin number of the chip does not equal to the pin used in arduino IDE.</p>
-                <img src="./images/eprom/attinypinout.png" class="figure-img img-fluid rounded" alt="pinout">
+                <p>I went to read the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf" target="_blank">datasheet</a> for the attiny85 and there, I found out that the pin number of the chip does not equal to the pin used in arduino IDE.</p>
+                <img src="./media/eprom/attinypinout.png" class="figure-img img-fluid rounded" alt="pinout">
                 <p>After changing the LED pin to 3 and button pin to 4, I uploaded the program again and this time it worked. I recorded a video of it working down below.</p>
-                <img src="./images/eprom/goodcode.png" class="figure-img img-fluid rounded" alt="good code">
+                <img src="./media/eprom/goodcode.png" class="figure-img img-fluid rounded" alt="good code">
                 <video width="420" height="240" controls>
-                    <source src="./images/eprom/20220219_201905 (1).mp4" type="video/mp4">
+                    <source src="./media/eprom/20220219_201905 (1).mp4" type="video/mp4">
                   </video>
+                  <h2>Thoughts</h2>
+                  <p>From this assignment, I learnt about the importance of reading datasheets of the electronic components I use. Without the datasheet, I might have missed out important information and create more problems than I should have.</p>
+                  <h2>Files</h2>
+                  <a href="./media/eprom/t85_test/t85_test.ino" target="_blank" download>Attiny85 test sketch</a>
+                  <br><br><br>
             </div>
             <div class="col-lg-2"></div>
         </div>
