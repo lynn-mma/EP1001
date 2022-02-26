@@ -16,7 +16,7 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8 col-md-12">
                 <nav class="navbar navbar-expand bg-white">
-                    <ul class="navbar-nav mr-auto" id="navbarul">
+                    <ul class="navbar-nav mr-auto" id="navbarul" >
                         <li class="nav-item"><a class="nav-link " href="index.html">Home Page</a> </li>
                         <li class="nav-item"><a class="nav-link " href="about.html">About</a> </li>
                         <li class="nav-item dropdown ">
@@ -45,8 +45,9 @@
                 <h1>Final Project</h1>
                 <h2>Table of contents</h2>
                 <ul>
-                    <li><a href="#rqmt"></a>Requirements</li>
+                    <li><a href="#rqmt">Requirements</a></li>
                     <li><a href="#idea">Ideation</a></li>
+                    <li><a href="#bom">Bill of Materials</a></li>
                     <li><a href="#pcbdsn">PCB Design</a></li>
                     <li><a href="#pcbmnf">PCB Manufacturing</a></li>
                     <li><a href="#pcbstuff">Stuffing the PCB</a></li>
@@ -74,6 +75,9 @@
                 </ul>
                 <h2 id="idea">Ideation</h2>
                 <p>For my final project in this module, I wanted to make a keypad with function keys for the laptop. My current keyboard that I am using is a small form factor keyboard, as a result it is lacking the function row. During class work, I tend to use the function keys a lot in other programs, and it is slowly starting to become a hassle to press function with my left hand while doing work. Moreover, I wanted to experiment with virtual-usb for the atmega328. So, I decided to make a 12 key function pad, with F1-F12 as its binds. I also had some cherry mx style mechanical keyboard switches lying around so I wanted to incorporate it into my project.</p>
+                <h2 id="bom">Bill of materials</h2>
+                <p>If you want to build along, here is the bill of materials and source files.</p>
+                <p>Add plox</p>
                 <h2 id="pcbdsn">PCB Design</h2>
                 <p>To get started on the PCB design, I first referenced an example of a v-usb keyboard by OBDEV found <a href="https://www.obdev.at/products/vusb/hidkeys.html">here.</a> The zip file given contains a schematic that I referenced. </p>
                 <img src="./media/FinalProj/obdev-example.png" class="figure-img img-fluid rounded" alt="obdev">
@@ -122,24 +126,93 @@
 
                 </ul>
                 <p>Referencing the schematic and board earlier, I started with the hardest part, the atmega328. Similar to how I did the attiny, I first started at one of the corner pins.</p>
-                <img src="./media/FinalProj/soldering1.jpg" class="figure-img img-fluid rounded" alt="firstsolder">
+                <img src="./media/FinalProj/soldering1.jpg" class="figure-img img-fluid rounded">
                 <p>Although I soldered my programmer and hello boards before, the pins of the atmega328 were tinier than I imagined. Zi Hon helped me a lot here, and taught me how to solder the pins efficiently. He showed me on one side of the atmega. He put a lot of flux on the pads of the PCB and the atmega chip. Afterwards, he got a small amount of solder onto the iron and in one pass, dragged the iron over the pins and let surface tension take over. The result is that all the pins were soldered and due to the small amount of solder, there was not enough to short 2 adjacent pins together. I used this method to solder on the rest of the atmega. </p>
                 <p>After this, I tackled the resonator. As the pads of the resonator completely cover the traces, I had to use the heatgun to solder on the component. I first put a small amount of solder onto the pads, then placed the resonator on it. Using the heatgun, I carefully heated up the pads underneath, taking care to not reheat the atmega. After a few minutes of struggling, I got the resonator soldered on.</p>
                 <p>At this point, I also tackled the mini usb. After the atmega, this was not really that bad, and it went down well.</p>
-                <img src="./media/FinalProj/soldering2.jpg" class="figure-img img-fluid rounded" alt="secondsolder">
+                <img src="./media/FinalProj/soldering2.jpg" class="figure-img img-fluid rounded">
                 <p>This was when I encountered an issue, not a major issue but just something to take note of in the future. When soldering on the housing(?) of the mini usb to the PCB, I accidentally put too much solder on one of the pads and the pad connected to the rest of the PCB (as shown above, near the bottom right). I tried to remelt the solder to remove it, but no matter how long I  put the iron on the blob, it would not melt. This is when I realised that, essentially, the large sheet of copper connected was acting like a heat sink to the pad, and all the heat I was adding to the pad was being removed just as quickly and being dispersed. After a few minutes, I just gave up and left it as is, as it did not affect other components anyways.</p>
-                <img src="./media/FinalProj/soldered.jpg" class="figure-img img-fluid rounded" alt="Soldered">
+                <img src="./media/FinalProj/soldered.jpg" class="figure-img img-fluid rounded">
                 <p>The rest of the components went down well. The only issue I faced was that I forgot that 2 bypass capacitors were needed, but I forgot it in the design. Luckily, the capacitors are supposed to be in parallel, so I just stacked the 2. Unelegant, yes, but I had no other options really. And with that, the PCB is (mostly) done and I tested it using the programmer.</p>
                 
                 <h2 id="pcbtst">Testing the PCB</h2>
                 <p>I opened up terminal and ran "avrdude -pm328 -cusbtiny", and it was able to recognise the chip, which is good news. That means that I can try programming this using arduino IDE to test.</p>
-                <img src="./media/FinalProj/test2.jpg" class="figure-img img-fluid rounded" alt="test2">
+                <img src="./media/FinalProj/test2.jpg" class="figure-img img-fluid rounded">
+                <p> To setup arduino IDE to program the board, I used the Atmega328 core by <a href="https://github.com/MCUdude/MiniCore" target="_blank">Minicore</a>. Installing the core is just like in my embedded programming assignment. Copy paste in "https://mcudude.github.io/MiniCore/package_MCUdude_MiniCore_index.json" into preferences, go to boards manager and install the core.</p>
+                <p>Once it was installed, I set up my IDE like so. </p>
+                <img src="./media/FinalProj/setup.png" class="figure-img img-fluid rounded">
+                <p>I modified the basic blink program in arduino to the different pins that I am using for the keyboard. From the schematic, pins 5-10 and 14-19 will be used for the switches. I just changed the output pin to the pins listed, one by one and tested with a multimeter to see if theres a pulse coming through.</p>
+                <p>I did not record it but yes it was working so I moved on to the other parts of the project for now.</p>
                 
                 
                 <h2 id="casedsn">Case Design and Manufacturing</h2>
-                
-                
+                <p>For the case design, I came up with a simple case that I can use the large format CNC and lasercutting for. I first came up with the top plate that will hold the keyboard switches. After taking some measurements of my own keyboard, I came up with this. </p>
+                <img src="./media/FinalProj/casetop.png" class="figure-img img-fluid rounded">
+                <p>Using this, as a reference, I modelled the bottom case as well.</p>
+                <img src="./media/FinalProj/casebottom.png" class="figure-img img-fluid rounded">
+                <p>I first went to laser cut the top plate using 3mm acrylic as that was the part with important dimensions. The plate came out well and the switches were able to fit snugly.</p>
+                <img src="./media/FinalProj/lasercut.jpg" class="figure-img img-fluid rounded">
+                <p>It was now then I realised laser cutting is not ideal. Looking at conventional keyboard plates, the switch has tabs that click into place. However, because of the thickness, the switch was just friction fit into the acrylic, and I could very easily knock it out.</p>
+                <p>To remedy this, I remodelled the top plate to be thinner where the switches are placed, from 3mm to 1.5mm, as well as taking into accound tolerances of my 3d printer and expanded the squares to be 14.2mm,</p>
+                <img src="./media/FinalProj/newplate.png" class="figure-img img-fluid rounded">
+                <p>Because of the step in thickness, I just 3d printed the top plate as it was more convenient. In hindsight, I could have lasercut 1.5mm acrylic, but at the time I had no time to go buy a sheet.</p>
+                <img src="./media/FinalProj/printedplate.jpg" class="figure-img img-fluid rounded">
+                <p>The new plate came out well and I was able to click in the switches firmly. The difference is quite apparant in the picture below.</p>
+                <img src="./media/FinalProj/comparison.jpg" class="figure-img img-fluid rounded">
+                <p>On the left is the proper way of mounting. On the right with the lasercut plate, you can see that the plastic was being bent where the clip is. I decided to move on with the 3d printed plate.</p>
+                <p>For the bottom case, initially I was planning to pocket and profile a single block of wood. However, when I went down to the large format CNC, they only had 15mm MDF. As I needed 15mm of space internally for my components, I had a dumb idea.</p>
+                <img src="./media/FinalProj/dumbidea.png" class="figure-img img-fluid rounded">
+                <p>Instead of doing it one piece, I would profile cut the top portion, then pocket the bottom portion completely to 5mm (I was scared of going too thin) then profile cutting it. And that was exactly what I did.</p>
+                <img src="./media/FinalProj/beforedeburr.jpg" class="figure-img img-fluid rounded">
+                <p>Because of the amount of material being removed, and the material itself, the surface and edges were fuzzy and left a lot of material left over. Using some low grit sandpaper and a knife, I cleaned up the pieces.</p>
+                <img src="./media/FinalProj/afterdeburr.jpg" class="figure-img img-fluid rounded">
+                <p>Now its time to intergrate all the hardware together.</p>
+
+
                 <h2 id="intg">Integration</h2>
+                <p>This is the part where my project strays heavily from digital fabrication and goes into regular fabrication. I could have put more thought into the process but I didn't, so oh well.</p>
+                <p>First things first, the PCB is too big. The USB port does not line up with the center opening I made for the case, really just an oversight on my part. To solve this issue, I took a hacksaw to the pcb.</p>
+                <img src="./media/FinalProj/hacksaw.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/hacksawed.jpg" class="figure-img img-fluid rounded">
+                <p>I am surprised I didn't break anything during this. After this I realised I had no way of mounting the PCB properly (double sided tape does not count). So to solve this problem I have created for myself, I took a drill to the pcb.</p>
+                <img src="./media/FinalProj/holes.jpg" class="figure-img img-fluid rounded">
+                <p>Using the PCB as a guide and guesstimating the alignment, I drilled similar holes into the bottom plate of the bottom case. I plan to use m3x5 countersunk screws in the build as I wanted it to be flush with the bottom, so after the 3mm holes were made I used a 6mm bit to somewhat countersink the screws.</p>
+                <img src="./media/FinalProj/guesstimation.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/holeplacement.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/m3holes.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/countersunk.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/countersunked.jpg" class="figure-img img-fluid rounded">
+                <p>On the inside, the PCB is offset from the bottom using 6mm brass standoffs. The PCB would be screwed upside down into the bottom case using m3x5 regular screws.</p>
+                <img src="./media/FinalProj/standoffs.jpg" class="figure-img img-fluid rounded">
+                <p>Afterwards, I did some more guesstimating for the placement of ISP header and reset button, and made holes for it using a drill and a file.</p>
+                <img src="./media/FinalProj/moreholes.jpg" class="figure-img img-fluid rounded">
+                <p>I then drilled the 4 holes to mount the top plate to in the top piece. After all this hackjobs were done, I glued together the 2 pieces of the bottom case using wood glue, and left it to dry overnight uder a weight.</p>
+                <img src="./media/FinalProj/woodglue.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/spreadglue.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/heavyload.jpg" class="figure-img img-fluid rounded">
+                <p>The next day, I test fit the PCB. Here, you can see how the PCB would be mounted using the m3x5 screws. As the screws were still too long, it would not screw tight all the way, which is why theres a 1mm plastic spacer in there. </p>
+                <img src="./media/FinalProj/spacer.jpg" class="figure-img img-fluid rounded">
+                <p>Once I confirmed that the PCB can fit and both the ISP and miniusb are accessible, I took the pcb off the bottom case. I unscrewed from the countersunk screws and left the standoffs attached to the pcb.</p>
+                <img src="./media/FinalProj/standoff.jpg" class="figure-img img-fluid rounded">
+                <p>Then, I clicked my mechanical switches into the top plate. Using a stripped single core wire, I ran the wire around one pin of each pin to be ground and snaked through all the switches, ending at the top right where the ground pad of the PCB is.</p>
+                <img src="./media/FinalProj/groundwire.jpg" class="figure-img img-fluid rounded">
+                <p>Once that was done and soldered, I made a loop with shorter red wires and placed them on the other pin of the switch.</p>
+                <img src="./media/FinalProj/singlepin.jpg" class="figure-img img-fluid rounded">
+                <p>I did so for the remaining switches and soldered all the pins. Every so often, I would check for shorts and if the connections were sound using a multimeter. I made sure that the left 6 switches' wires go to the left and the right 6 right to wrap around the pcb.</p>
+                <img src="./media/FinalProj/alltheswitches.jpg" class="figure-img img-fluid rounded">
+                <p>Once all the wires were soldered on the switches, I placed the pcb on top of all the wires. I taped down one side and focused on the soldering the left side.</p>
+                <img src="./media/FinalProj/leftsolder.jpg" class="figure-img img-fluid rounded">
+                <img src="./media/FinalProj/leftsoldered.jpg" class="figure-img img-fluid rounded">
+                <p>Once the left side was all soldered, I removed the tape and soldered on the right side the same way. At this point, which switch went to which pad did not matter as I can change it in code later on.</p>
+                <img src="./media/FinalProj/allsoldered.jpg" class="figure-img img-fluid rounded">
+                <p>Once that was done, I checked for one final time that all the connections were sound and that there were no shorts. When I was confident that all the connections were good to go, I got the bottom case and screwed everything in. I first lined up the standoffs of the PCB with the bottom case holes and screwed them in. Once that was done, I aligned the 4 top holes and used m3x8 screws to hold it down.</p>
+                <img src="./media/FinalProj/screwintop.jpg" class="figure-img img-fluid rounded">
+                <p>After that was done, I just added some spare F1-F12 keycaps I had lying around to the switches.</p>
+                <img src="./media/FinalProj/keycaps.jpg" class="figure-img img-fluid rounded">
+                <p>And with that, the hardware is all done, now it is time to program the board.</p>
+                <img src="./media/FinalProj/finalproduct.jpg" class="figure-img img-fluid rounded">
+
+
                 
                 
                 <h2 id="code">Coding</h2>

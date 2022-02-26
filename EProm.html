@@ -47,6 +47,8 @@
                 <p>Now that I made my ISP programmer board and my Hello Board, it was time to try and program the Hello Board using the ISP. First, I needed the attiny core from <a href="https://github.com/SpenceKonde/ATTinyCore"> Spence Konde.</a> I just had to open up my arduino 1.8.13, go to file -> preferences, and near the bottom there is a section for "Additional Boards Manager URLs". Here I just copy pasted in "http://drazzy.com/package_drazzy.com_index.json" </p>
                 <img src="./media/eprom/preferences.png" class="figure-img img-fluid rounded" alt="preference1">
                 <img src="./media/eprom/preferences2.png" class="figure-img img-fluid rounded" alt="preference2">
+                <p>Then, I opened up Tools -> Boards -> Board Manager, waited for the boards to load, searched for the attiny core and clicked install.</p>
+                <img src="./media/eprom/boardsmanager.png" class="figure-img img-fluid rounded" alt="preference2">
                 <p>Afterwards, I had to set up the IDE to program the Hello Board. I selected the board, chip, clock source and the programmer. I then burned the bootloader and my ISP was ready to program the hello board.</p>
                 <img src="./media/eprom/idesetup.png" class="figure-img img-fluid rounded" alt="setup">
                 <h2>Programming the board</h2>
