@@ -43,11 +43,13 @@
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <h1>Final Project</h1>
+                <h2>Disclaimer</h2>
+                <p>I don't know exactly why or how the code of my project works. 2 of my friends tried to replicate a similar project but both did not manage to get theirs working. Procede with caution when attempting to replicate my project.</p>
                 <h2>Table of contents</h2>
                 <ul>
                     <li><a href="#rqmt">Requirements</a></li>
                     <li><a href="#idea">Ideation</a></li>
-                    <li><a href="#bom">Bill of Materials</a></li>
+                    <li><a href="#bom">Bill of Materials and files</a></li>
                     <li><a href="#pcbdsn">PCB Design</a></li>
                     <li><a href="#pcbmnf">PCB Manufacturing</a></li>
                     <li><a href="#pcbstuff">Stuffing the PCB</a></li>
@@ -56,6 +58,7 @@
                     <li><a href="#intg">Integration</a></li>
                     <li><a href="#code">Coding</a></li>
                     <li><a href="#fnlrslt">Final Results</a></li>
+                    <li><a href="#fnltht">Final Thoughts</a></li>
                 </ul>
                 <h2 id="rqmt">Requirements</h2>
                 <p>This is an individual capstone project that integrates the range of technologies covered in this module.</p>
@@ -75,9 +78,39 @@
                 </ul>
                 <h2 id="idea">Ideation</h2>
                 <p>For my final project in this module, I wanted to make a keypad with function keys for the laptop. My current keyboard that I am using is a small form factor keyboard, as a result it is lacking the function row. During class work, I tend to use the function keys a lot in other programs, and it is slowly starting to become a hassle to press function with my left hand while doing work. Moreover, I wanted to experiment with virtual-usb for the atmega328. So, I decided to make a 12 key function pad, with F1-F12 as its binds. I also had some cherry mx style mechanical keyboard switches lying around so I wanted to incorporate it into my project.</p>
-                <h2 id="bom">Bill of materials</h2>
-                <p>If you want to build along, here is the bill of materials and source files.</p>
-                <p>Add plox</p>
+                <h2 id="bom">Bill of materials and source files</h2>
+                <p>PCB Components </p>
+                <ul>
+                    <li>Atmega328 x 1</li>
+                    <li>49 ohm resistor x2 (replacing the 68 ohm resistors in the schematic)</li>
+                    <li>10k ohm resistor x 1</li>
+                    <li>15k ohm resistor x 1</li>
+                    <li>Female mini usb x 1</li>
+                    <li>1N4148 Diodes x 2</li>
+                    <li>16 MHz resonator x1</li>
+                    <li>6mm switch x 1</li>
+                    <li>10uF capacitor x 1</li>
+                    <li>0.1uF capacitor x 1</li>
+                </ul>
+                <p>Remaining hardware</p>
+                <ul>
+                    <li>15mm MDF sheet</li>
+                    <li>Kailh Box Navies (or any cherry MX Style switch) x 12</li>
+                    <li>Keycaps (F1-F12, or any that you fancy) x 12</li>
+                    <li>Mini USB cable</li>
+                </ul>
+                <p>Files</p>
+                <a href="./media/FinalProj/FinalProjectCode/FinalProjectCode.ino" target="_blank" download>Final Project Arduino code</a> <br>
+                <a href="./media/FinalProj/Final_Project.f3d" target="_blank" download>Case F3d files (contains all 3 parts as bodies)</a> <br> 
+                <a href="./media/FinalProj/newboard.sch"download>PCB Schematic</a><br>
+                <a href="./media/FinalProj/newboard.brd"download>PCB Layout</a> <br> <br>
+                <p>Technologies Used</p>
+                <ul>
+                    <li>Large Format CNC</li>
+                    <li>3D Printing</li>
+                    <li>PCB milling</li>
+                </ul>
+
                 <h2 id="pcbdsn">PCB Design</h2>
                 <p>To get started on the PCB design, I first referenced an example of a v-usb keyboard by OBDEV found <a href="https://www.obdev.at/products/vusb/hidkeys.html">here.</a> The zip file given contains a schematic that I referenced. </p>
                 <img src="./media/FinalProj/obdev-example.png" class="figure-img img-fluid rounded" alt="obdev">
@@ -162,10 +195,12 @@
                 <p>On the left is the proper way of mounting. On the right with the lasercut plate, you can see that the plastic was being bent where the clip is. I decided to move on with the 3d printed plate.</p>
                 <p>For the bottom case, initially I was planning to pocket and profile a single block of wood. However, when I went down to the large format CNC, they only had 15mm MDF. As I needed 15mm of space internally for my components, I had a dumb idea.</p>
                 <img src="./media/FinalProj/dumbidea.png" class="figure-img img-fluid rounded">
-                <p>Instead of doing it one piece, I would profile cut the top portion, then pocket the bottom portion completely to 5mm (I was scared of going too thin) then profile cutting it. And that was exactly what I did.</p>
+                <p>Instead of doing it one piece, I would profile cut the top portion, then pocket the bottom portion completely to 5mm (I was scared of going too thin) then profile cutting it. And that was exactly what I did. I exported the faces as dxf and went down to the large format CNC.</p>
                 <img src="./media/FinalProj/beforedeburr.jpg" class="figure-img img-fluid rounded">
                 <p>Because of the amount of material being removed, and the material itself, the surface and edges were fuzzy and left a lot of material left over. Using some low grit sandpaper and a knife, I cleaned up the pieces.</p>
                 <img src="./media/FinalProj/afterdeburr.jpg" class="figure-img img-fluid rounded">
+                <p>Here is the fusion model of the final case I made.</p>
+                <iframe src="https://ichat1889.autodesk360.com/shares/public/SH9285eQTcf875d3c539ed84247f8c4230d4?mode=embed" width="1024" height="768" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
                 <p>Now its time to intergrate all the hardware together.</p>
 
 
@@ -216,9 +251,54 @@
                 
                 
                 <h2 id="code">Coding</h2>
-                
+                <p>Initially, I wanted to reference and use the source code from the HIDKeys project, found <a href="https://www.obdev.at/products/vusb/hidkeys.html"> here</a>. Although the HIDKeys example uses a mega8, I thought, as the atmega328 just has more memory, the same code would still work.</p>
+                <p>It did not.</p>
+                <p>No matter what I did, I could not flash the firmware. Here are the source files of the HIDKeys project.</p>
+                <img src="./media/FinalProj/hidfiles.png" class="figure-img img-fluid rounded">
+                <p>Zi Hon helped me out and together we spent around 3 hours on it. We tried changing the MCU and programmer in the makefile and made new hex files, we editted the main.c files, changed the set fuses in the makefile. At one point Mr Steven Chew came over to take a look and realised some scripts required a linux machine, so I used git Bash, and tried flashing it there, still did not work.</p>
+                <p>Even though nothing we tried worked, I still learnt a lot, like what to look out for when flashing firmware onto a chip. I also learnt about fuse settings. Mr Steven Chew directed me to a <a href="https://www.engbedded.com/fusecalc/" target="_blank">fuse calculation website</a> where I can check fuses for different chips and what they mean, as well as setting fuses using AVRdude in terminal.</p>
+                <p>In the end, I decided to scrap using HIDKeys and brought up a <a href="https://github.com/gloob/vusb-for-arduino" target="_blank">v-usb library</a> I found a few days prior. I thought that I would not be able to use the library, as on the documentation it said it required completely different hardware, and it used different D+ and D- pins for the v-usb. Zi Hon then told me that they should be edittable, and taught me how to look for it.</p>
+                <p>He first just quickly browsed through the utilities of the library and found a few lines that looked important.</p>
+                <img src="./media/FinalProj/utilities.png" class="figure-img img-fluid rounded">
+                <p>From these 2 lines, he said that they should be defined elsewhere, but we did not know exactly where. So he opened up arduino IDE and editted the preferences. He made it show verbose output during compilation and show all compiler warnings.</p>
+                <img src="./media/FinalProj/preferences.png" class="figure-img img-fluid rounded">
+                <p>He then opened the example keyboard program from the library and redefined the 2 lines he found. Because in the documentation shows that D+ and D- are 2 and 4 respectively, he just put in any number other than those 2.</p>
+                <img src="./media/FinalProj/redefining.png" class="figure-img img-fluid rounded">
+                <p>He then verified the code, and arduino IDE would show an error that pinpointed exactly where it was previously defined.</p>
+                <img src="./media/FinalProj/errorcode.png" class="figure-img img-fluid rounded">
+                <p>We then navigated to the file location and, sure enough, it was there.</p>
+                <img src="./media/FinalProj/filelocation.png" class="figure-img img-fluid rounded">
+                <p>Because HIDKeys used pin 2 as D+ and pin 0 as D-, I just changed the DMINUS_BIT to 0. Once that was done, I saved the file, went back to preferences to turn off all the compiler warning messages, and uploaded the demo program. The program simple inputs a "hello world" followed by enter.</p>
+                <img src="./media/FinalProj/demoprogram.png" class="figure-img img-fluid rounded">
+                <p>And it worked. I plugged in the mini usb and my laptop immediately recognised it as a USBKeyboard. I did not have photos of this part but when I clicked the keyswitch I set it to, it sent the "hello world" message. Once I got the USB part working, the rest of the code was very, very simple.</p>
+                <p>I first defined every switch to the corresponding pin. This just took a lot of trial and error to find out the sequence.</p>
+                <img src="./media/FinalProj/switchdefinition.png" class="figure-img img-fluid rounded">
+                <p>I then setup each switch as a input and wrote a HIGH to it, as the switches are active low. It is just these 2 lines copy pasted 11 more times for F2-F12.</p>
+                <img src="./media/FinalProj/switchsetup.png" class="figure-img img-fluid rounded">
+                <p>Then, in the loop, I put USBKeyboard.update();, then for each switch to just send the corresponding keystroke.</p>
+                <img src="./media/FinalProj/switchloop.png" class="figure-img img-fluid rounded">
+                <p>And with that, the code is done.</p>
                 
                 <h2 id="fnlrslt">Final Result</h2>
+                <p>Here is the final product in action, which is just me pressing it from F1-F12. Here is the <a href="https://en.key-test.ru/">website I used to do the keytest</a>.</p>
+                <video width="1260" height="720" controls>
+                    <source src="./media/FinalProj/showcase.mp4" type="video/mp4">
+                </video>
+                <p>Here is the 1 minute video I made to showcase the project.</p>
+                <video width="1260" height="720" controls>
+                    <source src="./presentation.mp4" type="video/mp4">
+                </video>
+                <p>And here is the 1 page slide I made to showcase the project.</p>
+                <img src="./presentation.png" class="figure-img img-fluid rounded">
+
+                <h2 id="fnltht">Final Thoughts</h2>
+                <p>This was a really fun module, I got to learn many skills and techniques that I would have otherwise missed out. Special thanks to Mr Steven Chew for guiding us through this module, and to Zi Hon for helping me out so much as well.</p>
+                <p>As for my final project, I still don't how why it even worked to begin with, honestly speaking I think I just got lucky. It was using schematics last updated in 2012 for a different chip, with a library last updated 7 years ago where the hardware does not even match. 2 of my friends tried replicating my project, and even when trying to replicate as best as they can, the computer could not recognise either's PCBs as a keyboard, and I cannot explain why. </p>
+                <p>In terms of design, there are more to improve as well. In the future, when I revisit this project, I would try to make an integrated PCB, where the switches solder into the PCB, eliminating the need for wires. I would also try to put more thought into the case design, instead of having to resort to manual labor to make it work. Honestly, I am quite dissapointed in what I achieved for the project, I could have done more.</p>
+                <p>Nevertheless, it is over and done, I tried my best at the time. Thanks for reading up to here, peace.</p>
+                <p>- final entry, lynn myat moe aung, signing out.</p>
+                <br><br><br>
+
 
             <div class="col-lg-2"></div>
         </div>

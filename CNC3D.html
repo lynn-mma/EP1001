@@ -43,7 +43,7 @@
             <div class="col-lg-8">
                 <h1>3D Computer Controlled Machining</h1>
                 <h2>Introduction</h2>
-                <p>3D machining is using all 3 axes of the machine, X Y Z in tandem to create a 3D part. For this assignment, we used the same stepcraft machine we used for PCB milling.</p>
+                <p>3D machining is using all 3 axes of the machine, X Y Z in tandem to create a 3D part. For this assignment, we used the same stepcraft machine we used for PCB milling to mill a 3D object out of dense foam, which we will then mold and cast in the next assignment.</p>
                 <h2>Making the model</h2>
                 <p>We were to model a 3D model that roughly fits in a 50x50x30mm area. Considering the size, I decided to make a drawing tablet pen holder. I started by making a stock model, which is just a rectangle 45x45x20, as the model I plan to make is not that big and I wanted to save material.</p>
                 <img src="./media/3dcnc/stockmodel.png" class="figure-img img-fluid rounded">
@@ -54,10 +54,11 @@
                 <p>Finally, I revolved the side wall part 360 degrees around the center line and the mold is done.</p>
                 <img src="./media/3dcnc/revolve.png" class="figure-img img-fluid rounded">
                 <img src="./media/3dcnc/final.png" class="figure-img img-fluid rounded">
+                <iframe src="https://ichat1889.autodesk360.com/shares/public/SH9285eQTcf875d3c5399f2654e712774403?mode=embed" width="1024" height="768" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
                 <h2>Generating G-Code</h2>
                 <p>After modeling, I went to the manufacture tab, found at the top left of the navigation.</p>
                 <img src="./media/3dcnc/manufacture.png" class="figure-img img-fluid rounded">
-                <p>Then, I went to search <a href="https://cam.autodesk.com/hsmposts">libraries on Fusion360</a>, and searched for STEPCRAFT UCCNC post processer, and unzipped the stepcraft uccnc.cps file into my Fusion 360 CAM post processor folder. I followed a <a href="https://knowledge.autodesk.com/support/fusion-360/learn-explore/caas/sfdcarticles/sfdcarticles/How-to-add-a-Post-Processor-to-your-Personal-Posts-in-Fusion-360.html">tutorial</a> to install the post processor in Fusion360. </p>
+                <p>Then, I went to search <a href="https://cam.autodesk.com/hsmposts">libraries on Fusion360</a>, and searched for STEPCRAFT UCCNC post processer, and unzipped the stepcraft uccnc.cps file into my Fusion 360 CAM post processor folder. I followed this <a href="https://knowledge.autodesk.com/support/fusion-360/learn-explore/caas/sfdcarticles/sfdcarticles/How-to-add-a-Post-Processor-to-your-Personal-Posts-in-Fusion-360.html">tutorial</a> to install the post processor in Fusion360. </p>
                 <p>I made a new set up by clicking the setup button.</p>
                 <img src="./media/3dcnc/setup.png" class="figure-img img-fluid rounded">
                 <p>After the setup, I clicked on pocket to start the toolpath operation. The toolpath can be found under 3D.</p>
@@ -89,6 +90,8 @@
                 <img src="./media/3dcnc/final2.jpg" class="figure-img img-fluid rounded">
                 <h2>Thoughts</h2>
                 <p>After the milling was done, it was time to make a mold and cast a new pen holder. I made some mistakes during the assignment that I need to keep in mind for next time. One being that I used a finishing pass for the entire milling process. Because of this, the machining time was very long considering the small amount of material I am removing. In the future I would try to set up 2 toolpaths, one roughing pass and one finishing pass. I also need to get used to the manufacture tab of Fusion360 as I am still unfamiliar with most of the features. </p>
+                <h2>Files</h2>
+                <a href="./media/3dcnc/PenHolder .f3d" download>Pen Holder F3D file.</a>
                 <br>
                 <br>
                 <br>

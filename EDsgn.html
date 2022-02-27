@@ -44,7 +44,7 @@
             <div class="col-lg-8">
                 <h1>Electronics Design</h1>
                 <h2>Introduction</h2>
-                <p>This week we were tasked to design and produce a PCB on our own. Specifically, a hello-world board using another ATtiny45. The program used to make the PCB design was Autodesk EAGLE. All we were given was the schematic, a reference picture of the traces, a picture of the final product and additional assignments such as adding an LED with a current limiting resistor and a switch.</p>
+                <p>We were tasked to redraw, design and produce a PCB on our own. Specifically, a hello-world board using another ATtiny85. The program used to make the PCB design was Autodesk EAGLE. All we were given was the schematic, a reference picture of the traces, a picture of the final product and additional assignments such as adding an LED with a current limiting resistor and a switch.</p>
                 <h2>Using EAGLE</h2>
                 <p>Immediately after downloading EAGLE, the first thing to do was to add the <a href="https://gitlab.fabcloud.org/pub/libraries/electronics">Fablab EAGLE Library</a>, containing the components we will use for this module. To add the library, first download and unzip the folder. Then navigate to Documents -> EAGLE -> Libraries, and move the unzipped folder into this libraries folder. As EAGLE sorts libraries alphabetically, I made it easier to find by adding '00' to the front of the library name. </p>
                 <img src="./media/EDsgn/library.png" class="figure-img img-fluid rounded">
@@ -144,6 +144,9 @@
                 <p>After all the components were stuffed, I used a multimeter to check to see if all the connections are correct and if there were any shorts. Luckily there weren't any so my Hello Board was good to go. I did make some mistakes during the design process though. One of them is the fact that the FTDI header was hanging off the board.</p>
                 <img src="./media/EDsgn/wrong.jpg" class="figure-img img-fluid rounded">
                 <p>Because the FTDI is hanging by the trace, if I am not careful with how I handle it, I might rip the traces right off. The only fix for this would be to extend the outline past the FTDI traces in Eagle, remill and stuff another board, however I did not have time for that so I just stuck with this. In the future. I will keep this in mind when designing new pcbs. And with that, my Hello Board was done. The next time I will use this is during embedded programming.</p>
+                <h2>Files</h2>
+                <a href="./media/EDsgn/HelloBoardFinal.sch"download>Hello Board Schematic</a><br>
+                <a href="./media/EDsgn/HelloBoardFinal.brd"download>Hello Board Layout</a>
                 
                 <br><br><br>
             </div>
